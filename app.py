@@ -7,6 +7,8 @@ import requests as r
 import argparse
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+from Button import Button
+from Point import Point
 
 # multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
 
@@ -26,6 +28,8 @@ while 1:
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x-1, y-1), (x+w+1, y+h+1), (255, 0, 0), 2)
         
+    x = Button("hey", Point(100, 100), Point(200, 200), (0, 255, 0))
+    x.drawButton(img)
     cv2.imshow('img', img)
     k = cv2.waitKey(30) & 0xff
     if k == ord('`'):
