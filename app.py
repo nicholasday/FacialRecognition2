@@ -1,36 +1,59 @@
-import numpy as np
 import cv2
-import os
-import time
-from numpy import linalg as LA
-import requests as r
-import argparse
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 from Button import Button
+from Rectangle import Rectangle
 from Point import Point
-
-# multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
-
-# https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-# https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_eye.xml
+from FaceRecognizer import FaceRecognizer
+from HandRecognizer import HandRecognizer
+from Database import Database
+import numpy as np
 
 cap = cv2.VideoCapture(0)
 
 cv2.namedWindow('img')
 
+faceRecognizer = FaceRecognizer()
+handRecognizer = HandRecognizer(.65, .8)
+db = Database()
+
+x = 0
+y = 0
+
+def clickHandler(event, x_click, y_click, flags, param):
+    global x, y
+    if event == cv2.EVENT_LBUTTONDOWN:
+        x = x_click
+        y = y_click
+    elif event == cv2.EVENT_LBUTTONUP:
+        x = 0
+        y = 0
+
+cv2.setMouseCallback("img", clickHandler)
+
+buttons = []
+
+listButton = Button("List", Point(100, 100), Point(200, 200), (0, 255, 0))
+listButton.setClickHandler(db.getMembers)
+buttons.append(listButton)
+
 while 1:
     ret, img = cap.read()
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    img = cv2.flip(img, 1)
     
-    for (x,y,w,h) in faces:
-        cv2.rectangle(img, (x-1, y-1), (x+w+1, y+h+1), (255, 0, 0), 2)
+    faces = faceRecognizer.recognize(img)
+
+    img = handRecognizer.recognize(img)
+
+    for face in faces:
+        face.draw(img)
         
-    x = Button("hey", Point(100, 100), Point(200, 200), (0, 255, 0))
-    x.drawButton(img)
+    for button in buttons:
+        button.draw(img)
+        if isinstance(button, Button):
+            button.detectClick(x, y)
+
     cv2.imshow('img', img)
+
     k = cv2.waitKey(30) & 0xff
     if k == ord('`'):
         break
