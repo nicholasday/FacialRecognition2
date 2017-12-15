@@ -10,6 +10,7 @@ class HandRecognizer(Recognizer):
     maskCreated = False
     mask = None
     maskIterations = 0
+    count = 0
 
     def __init__(self, x_begin, y_end):
         self.x_begin = x_begin
@@ -35,7 +36,11 @@ class HandRecognizer(Recognizer):
                         cv2.circle(drawing, far, 8, [211, 84, 0], -1)
 
                 return cnt
+
         return 0
+
+    def getCount(self):
+        return self.count
 
     def recognize(self, img):
         cv2.rectangle(img, (int(self.x_begin * img.shape[1]), 0), (img.shape[1], int(self.y_end * img.shape[0])), (255, 0, 0), 2)
@@ -63,7 +68,7 @@ class HandRecognizer(Recognizer):
 
         gray_image = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
 
-        ret,th2= cv2.threshold(gray_image,20,255,cv2.THRESH_BINARY)
+        ret,th2= cv2.threshold(gray_image,15,255,cv2.THRESH_BINARY)
         kernel = np.ones((3, 3), np.uint8)
         erosion = cv2.erode(th2, kernel, iterations=1)
         im2, contours, hierarchy = cv2.findContours(erosion, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -77,7 +82,7 @@ class HandRecognizer(Recognizer):
                 cv2.drawContours(roi, [hull], -1, 100, 3)
                 cv2.drawContours(roi, [contour], -1, 255, 3)
 
-                count = self.calculateFingers(contour, roi)
+                self.count = self.calculateFingers(contour, roi)
 
         img[0:int(self.y_end * img.shape[0]), int(self.x_begin * img.shape[1]):img.shape[1]] = roi # cv2.cvtColor(erosion, cv2.COLOR_GRAY2BGR)
 
