@@ -57,8 +57,6 @@ learnButton.setClickHandler(trainer.learnFace)
 buttons.append(learnButton)
 
 while 1:
-    tkTest()
-
     ret, img = cap.read()
 
     img = cv2.flip(img, 1)
@@ -66,6 +64,11 @@ while 1:
     faces = faceRecognizer.detect_faces(img)
 
     img = handRecognizer.recognize(img)
+
+    count = handRecognizer.getCount()
+
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    cv2.putText(img, "Fingers: " + str(count), (50, 100), font, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
     for face in faces:
         face.draw(img)
