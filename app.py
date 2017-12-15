@@ -1,5 +1,4 @@
 import cv2
-from tkinter import *
 from Trainer import Trainer
 from Button import Button
 from Rectangle import Rectangle
@@ -20,20 +19,6 @@ db = Database()
 
 x = 0
 y = 0
-
-def tkTest():
-    master = Tk()
-    Label(master, text="First Name").grid(row=0)
-    Label(master, text="Last Name").grid(row=1)
-
-    e1 = Entry(master)
-    e2 = Entry(master)
-
-    e1.grid(row=0, column=1)
-    e2.grid(row=1, column=1)
-
-    mainloop()
-    return
 
 def clickHandler(event, x_click, y_click, flags, param):
     global x, y
@@ -57,8 +42,6 @@ learnButton.setClickHandler(trainer.learnFace)
 buttons.append(learnButton)
 
 while 1:
-    tkTest()
-
     ret, img = cap.read()
 
     img = cv2.flip(img, 1)

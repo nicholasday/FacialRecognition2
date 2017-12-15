@@ -1,27 +1,43 @@
+from Trainer import Trainer
+from FaceRecognizer import FaceRecognizer
 import os
 import cv2
 import numpy as np
 
-numOfSaves = 0
-name = input('input name of person being learned')
-names = []
-matches = 0
-for person in os.listdir('learnedFaces'):
-    learned = np.load('learnedFaces/' + person)
-    names.append(person[:-5])
-print(names)
-for person in os.listdir('learnedFaces'):
-    if name == person[:-5]:
-        matches += 1
-        print('match')
-tempName = name
-tempName += str(matches)
-eigenvectors = np.load('eigenVectors.npy')
-average = cv2.imread('averageFace.png', cv2.IMREAD_GRAYSCALE)
-given = cv2.imread('givenFace' + str(numOfSaves) + '.png', cv2.IMREAD_GRAYSCALE)
-given = given.astype(np.int16)
-average = average.astype(np.int16)
-given = given - average
-given = given.flatten()
-learned = np.dot(given, eigenvectors)
-np.save('learnedFaces/' + tempName + '.npy', learned)
+# multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
+
+# https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+# https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_eye.xml
+
+trainer = Trainer()
+faceRecognizer = FaceRecognizer()
+cap = cv2.VideoCapture(0)
+learned = False
+
+while 1:
+    ret, img = cap.read()
+
+    img = cv2.flip(img, 1)
+    
+    faces = faceRecognizer.detect_faces(img)
+
+    for face in faces:
+        face.draw(img)
+
+    if not faceRecognizer.pictureTaken:
+        img = faceRecognizer.takePictures(img, 5)
+
+    if faceRecognizer.pictureTaken and not learned:
+        img=trainer.learnGiven(img)
+        learned = True
+
+    cv2.imshow('img', img)
+
+    k = cv2.waitKey(30) & 0xff
+    if k == ord('`'):
+        break
+    
+cap.release()
+cv2.destroyAllWindows()
+
