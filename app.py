@@ -1,4 +1,6 @@
 import cv2
+from tkinter import *
+from Trainer import Trainer
 from Button import Button
 from Rectangle import Rectangle
 from Point import Point
@@ -11,12 +13,27 @@ cap = cv2.VideoCapture(0)
 
 cv2.namedWindow('img')
 
+trainer = Trainer()
 faceRecognizer = FaceRecognizer()
 handRecognizer = HandRecognizer(.65, .8)
 db = Database()
 
 x = 0
 y = 0
+
+def tkTest():
+    master = Tk()
+    Label(master, text="First Name").grid(row=0)
+    Label(master, text="Last Name").grid(row=1)
+
+    e1 = Entry(master)
+    e2 = Entry(master)
+
+    e1.grid(row=0, column=1)
+    e2.grid(row=1, column=1)
+
+    mainloop()
+    return
 
 def clickHandler(event, x_click, y_click, flags, param):
     global x, y
@@ -35,18 +52,26 @@ listButton = Button("List", Point(100, 100), Point(200, 200), (0, 255, 0))
 listButton.setClickHandler(db.getMembers)
 buttons.append(listButton)
 
+learnButton = Button('Learn', Point(250, 100), Point(350, 200), (0, 255, 0))
+learnButton.setClickHandler(trainer.learnFace)
+buttons.append(learnButton)
+
 while 1:
+    tkTest()
+
     ret, img = cap.read()
 
     img = cv2.flip(img, 1)
     
-    faces = faceRecognizer.recognize(img)
+    faces = faceRecognizer.detect_faces(img)
 
     img = handRecognizer.recognize(img)
 
     for face in faces:
         face.draw(img)
-        
+
+    img = faceRecognizer.recognize(img)
+
     for button in buttons:
         button.draw(img)
         if isinstance(button, Button):

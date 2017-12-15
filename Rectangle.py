@@ -11,4 +11,4 @@ class Rectangle:
         cv2.rectangle(img, (self.x-1, self.y-1), (self.x+self.width+1, self.y+self.height+1), (255, 0, 0), 2)
 
     def __repr__(self):
-        return f'Rectangle({self.x}, {self.y}, {self.width}, {self.height})'
+        return 'Rectangle({self.x}, {self.y}, {self.width}, {self.height})'

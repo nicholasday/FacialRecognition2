@@ -3,7 +3,7 @@ import cv2
 import os
 
 class Trainer():
-    def train():
+    def train(self):
         z = 2
         numberOfImages = 0
         for images in os.listdir('trainingImages') :
@@ -19,3 +19,5 @@ class Trainer():
             m = np.concatenate((m, img[:, None]), axis=1)
             z += 1
         np.save('trainingFacesMatrix.npy', m)
+
+    def learnFace(self):
