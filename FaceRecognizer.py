@@ -38,6 +38,7 @@ class FaceRecognizer(Recognizer):
             for person in os.listdir('learnedFaces'):
                 learned = np.load('learnedFaces/' + person)
                 peopleNames.append(person[:-5])
+                print(person[:-5])
                 diff = resized_crop_img - learned
                 distance = LA.norm(diff)
                 distances.append(distance)

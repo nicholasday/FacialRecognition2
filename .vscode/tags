@@ -1,0 +1,102 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/61cf800/
+Button	../Button.py	/^class Button:$/;"	kind:class	line:3
+Button.py	../Button.py	1;"	kind:file	line:1
+Database	../Database.py	/^class Database():$/;"	kind:class	line:6
+Database.py	../Database.py	1;"	kind:file	line:1
+FaceRecognizer	../FaceRecognizer.py	/^class FaceRecognizer(Recognizer):$/;"	kind:class	line:12
+FaceRecognizer.py	../FaceRecognizer.py	1;"	kind:file	line:1
+HandRecognizer	../HandRecognizer.py	/^class HandRecognizer(Recognizer):$/;"	kind:class	line:9
+HandRecognizer.py	../HandRecognizer.py	1;"	kind:file	line:1
+LA	../FaceRecognizer.py	/^from numpy import linalg as LA$/;"	kind:unknown	line:1
+LearnFace.py	../LearnFace.py	1;"	kind:file	line:1
+Point	../Point.py	/^class Point:$/;"	kind:class	line:1
+Point.py	../Point.py	1;"	kind:file	line:1
+Recognizer	../Recognizer.py	/^class Recognizer(ABC):$/;"	kind:class	line:3
+Recognizer.py	../Recognizer.py	1;"	kind:file	line:1
+Rectangle	../Rectangle.py	/^class Rectangle:$/;"	kind:class	line:3
+Rectangle.py	../Rectangle.py	1;"	kind:file	line:1
+Trainer	../Trainer.py	/^class Trainer():$/;"	kind:class	line:5
+Trainer.py	../Trainer.py	1;"	kind:file	line:1
+URL	../Database.py	/^URL = 'http:\/\/signin-api.nickendo.com'$/;"	kind:variable	line:4
+User	../User.py	/^class User():$/;"	kind:class	line:1
+User.py	../User.py	1;"	kind:file	line:1
+__init__	../Button.py	/^    def __init__(self, text, topCorner, bottomCorner, color):$/;"	kind:member	line:4
+__init__	../HandRecognizer.py	/^    def __init__(self, x_begin, y_end):$/;"	kind:member	line:14
+__init__	../Point.py	/^    def __init__(self,x_init,y_init):$/;"	kind:member	line:2
+__init__	../Rectangle.py	/^    def __init__(self, x_init, y_init, width, height):$/;"	kind:member	line:4
+__init__	../User.py	/^    def __init__(self, name, id, pizza, team):$/;"	kind:member	line:4
+__repr__	../Point.py	/^    def __repr__(self):$/;"	kind:member	line:10
+__repr__	../Rectangle.py	/^    def __repr__(self):$/;"	kind:member	line:13
+__repr__	../User.py	/^    def __repr__(self):$/;"	kind:member	line:10
+app.py	../app.py	1;"	kind:file	line:1
+average	../LearnFace.py	/^average = average.astype(np.int16)$/;"	kind:variable	line:23
+average	../LearnFace.py	/^average = cv2.imread('averageFace.png', cv2.IMREAD_GRAYSCALE)$/;"	kind:variable	line:20
+backgroundModel	../HandRecognizer.py	/^backgroundModel = cv2.createBackgroundSubtractorMOG2()$/;"	kind:variable	line:7
+buttons	../app.py	/^buttons = []$/;"	kind:variable	line:49
+calculateFingers	../HandRecognizer.py	/^    def calculateFingers(self, res, drawing): $/;"	kind:member	line:18
+cap	../app.py	/^cap = cv2.VideoCapture(0)$/;"	kind:variable	line:12
+clickHandler	../app.py	/^def clickHandler(event, x_click, y_click, flags, param):$/;"	kind:function	line:38
+db	../app.py	/^db = Database()$/;"	kind:variable	line:19
+detectClick	../Button.py	/^    def detectClick(self, x, y):$/;"	kind:member	line:18
+detect_faces	../FaceRecognizer.py	/^    def detect_faces(self, img):$/;"	kind:member	line:43
+draw	../Button.py	/^    def draw(self, img):$/;"	kind:member	line:10
+draw	../Rectangle.py	/^    def draw(self, img):$/;"	kind:member	line:10
+e1	../tktest.py	/^e1 = Entry(master)$/;"	kind:variable	line:7
+e2	../tktest.py	/^e2 = Entry(master)$/;"	kind:variable	line:8
+eigenvectors	../LearnFace.py	/^eigenvectors = np.load('eigenVectors.npy')$/;"	kind:variable	line:19
+faceRecognizer	../app.py	/^faceRecognizer = FaceRecognizer()$/;"	kind:variable	line:17
+face_cascade	../FaceRecognizer.py	/^    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')$/;"	kind:variable	line:13
+faces	../app.py	/^    faces = faceRecognizer.detect_faces(img)$/;"	kind:variable	line:66
+getMembers	../Database.py	/^    def getMembers(self):$/;"	kind:member	line:18
+given	../LearnFace.py	/^given = cv2.imread('givenFace' + str(numOfSaves) + '.png', cv2.IMREAD_GRAYSCALE)$/;"	kind:variable	line:21
+given	../LearnFace.py	/^given = given - average$/;"	kind:variable	line:24
+given	../LearnFace.py	/^given = given.astype(np.int16)$/;"	kind:variable	line:22
+given	../LearnFace.py	/^given = given.flatten()$/;"	kind:variable	line:25
+handRecognizer	../app.py	/^handRecognizer = HandRecognizer(.65, .8)$/;"	kind:variable	line:18
+img	../app.py	/^    img = cv2.flip(img, 1)$/;"	kind:variable	line:64
+img	../app.py	/^    img = faceRecognizer.recognize(img)$/;"	kind:variable	line:73
+img	../app.py	/^    img = handRecognizer.recognize(img)$/;"	kind:variable	line:68
+img	../app.py	/^    ret, img = cap.read()$/;"	kind:variable	line:62
+k	../app.py	/^    k = cv2.waitKey(30) & 0xff$/;"	kind:variable	line:82
+learnButton	../app.py	/^learnButton = Button('Learn', Point(250, 100), Point(350, 200), (0, 255, 0))$/;"	kind:variable	line:55
+learnFace	../Trainer.py	/^    def learnFace(self):$/;"	kind:member	line:23
+learned	../LearnFace.py	/^    learned = np.load('learnedFaces\/' + person)$/;"	kind:variable	line:10
+learned	../LearnFace.py	/^learned = np.dot(given, eigenvectors)$/;"	kind:variable	line:26
+listButton	../app.py	/^listButton = Button("List", Point(100, 100), Point(200, 200), (0, 255, 0))$/;"	kind:variable	line:51
+loadSignins	../Database.py	/^    def loadSignins(self, user):$/;"	kind:member	line:15
+mask	../HandRecognizer.py	/^    mask = None$/;"	kind:variable	line:11
+maskCreated	../HandRecognizer.py	/^    maskCreated = False$/;"	kind:variable	line:10
+maskIterations	../HandRecognizer.py	/^    maskIterations = 0$/;"	kind:variable	line:12
+master	../tktest.py	/^master = Tk()$/;"	kind:variable	line:3
+matches	../LearnFace.py	/^matches = 0$/;"	kind:variable	line:8
+name	../LearnFace.py	/^name = input('input name of person being learned')$/;"	kind:variable	line:6
+names	../LearnFace.py	/^names = []$/;"	kind:variable	line:7
+np	../FaceRecognizer.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	../HandRecognizer.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	../LearnFace.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	../Trainer.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../app.py	/^import numpy as np$/;"	kind:namespace	line:10
+numOfSaves	../LearnFace.py	/^numOfSaves = 0$/;"	kind:variable	line:5
+recognize	../FaceRecognizer.py	/^    def recognize(self, img):$/;"	kind:member	line:15
+recognize	../HandRecognizer.py	/^    def recognize(self, img):$/;"	kind:member	line:40
+recognize	../Recognizer.py	/^    def recognize(self):$/;"	kind:member	line:5
+ret	../app.py	/^    ret, img = cap.read()$/;"	kind:variable	line:62
+setClickHandler	../Button.py	/^    def setClickHandler(self, handler):$/;"	kind:member	line:15
+shift	../Point.py	/^    def shift(self, x, y):$/;"	kind:member	line:6
+signin	../Database.py	/^    def signin(self, user):$/;"	kind:member	line:9
+signins	../User.py	/^    signins = []$/;"	kind:variable	line:2
+signout	../Database.py	/^    def signout(self, user):$/;"	kind:member	line:12
+tempName	../LearnFace.py	/^tempName = name$/;"	kind:variable	line:17
+tkTest	../app.py	/^def tkTest():$/;"	kind:function	line:24
+tktest.py	../tktest.py	1;"	kind:file	line:1
+train	../Trainer.py	/^    def train(self):$/;"	kind:member	line:6
+trainer	../app.py	/^trainer = Trainer()$/;"	kind:variable	line:16
+users	../Database.py	/^    users = []$/;"	kind:variable	line:7
+x	../app.py	/^x = 0$/;"	kind:variable	line:21
+y	../app.py	/^y = 0$/;"	kind:variable	line:22
