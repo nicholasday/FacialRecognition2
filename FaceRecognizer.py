@@ -29,10 +29,10 @@ class FaceRecognizer(Recognizer):
             resized_crop_img = cv2.resize(crop_img, (50, 50))
             givenImage = resized_crop_img
             resized_crop_img = resized_crop_img.astype(np.int16)
-            average = average.astype(np.int16)
-            resized_crop_img = resized_crop_img - average
+            self.average = self.average.astype(np.int16)
+            resized_crop_img = resized_crop_img - self.average
             resized_crop_img = resized_crop_img.flatten()
-            resized_crop_img = np.dot(resized_crop_img, eigenvectors)
+            resized_crop_img = np.dot(resized_crop_img, self.eigenvectors)
             distances = []
             peopleNames = []
             for person in os.listdir('learnedFaces'):

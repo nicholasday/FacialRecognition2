@@ -37,10 +37,6 @@ listButton = Button("List", Point(100, 100), Point(200, 200), (0, 255, 0))
 listButton.setClickHandler(db.getMembers)
 buttons.append(listButton)
 
-learnButton = Button('Learn', Point(250, 100), Point(350, 200), (0, 255, 0))
-learnButton.setClickHandler(trainer.learnFace)
-buttons.append(learnButton)
-
 while 1:
     ret, img = cap.read()
 
@@ -49,11 +45,6 @@ while 1:
     faces = faceRecognizer.detect_faces(img)
 
     img = handRecognizer.recognize(img)
-
-    count = handRecognizer.getCount()
-
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    cv2.putText(img, "Fingers: " + str(count), (50, 100), font, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
     for face in faces:
         face.draw(img)
